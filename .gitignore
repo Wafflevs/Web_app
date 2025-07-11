@@ -3,6 +3,7 @@
 
 # EXCEPCIONES (solo esto se sube):
 !.gitignore
+!RP/
 !RP/act_25.py
 !requirements.txt
 # !README.md
