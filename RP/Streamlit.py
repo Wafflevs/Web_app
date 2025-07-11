@@ -75,3 +75,4 @@ with col3:
 
     ram = st.slider("Memoria RAM", min_value=256, max_value=4000)
     sc_h = st.slider("altura de la pantalla cm", min_value=10, max_value=12)
+    
