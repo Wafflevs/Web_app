@@ -75,3 +75,5 @@ with col3:
 
     ram = st.slider("Memoria RAM", min_value=256, max_value=4000)
     sc_h = st.slider("altura de la pantalla cm", min_value=10, max_value=12)
+    sc_w = st.slider("Ancho de la pantalla", min_value= 0, max_value=18)
+    talk_time = st.slider("Duracion de la bateria (Hrs)", min_value=2, max_value=20)
