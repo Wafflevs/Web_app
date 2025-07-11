@@ -90,7 +90,7 @@ with col5:
 
 with col6:
     four_g = st.selectbox("es 4G",[0,1])
-    wifi = st.selectbox("tiewn wifi?", [0,1])
+    wifi = st.selectbox("tiene wifi?", [0,1])
     
 st.divider()
 
