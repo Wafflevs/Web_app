@@ -77,3 +77,68 @@ with col3:
     sc_h = st.slider("altura de la pantalla cm", min_value=10, max_value=12)
     sc_w = st.slider("Ancho de la pantalla", min_value= 0, max_value=18)
     talk_time = st.slider("Duracion de la bateria en uso maximo (Hrs)", min_value=2, max_value=20)
+    
+col4, col5, col6 = st.columns(3)
+
+with col4:
+    blue = st.selectbox("Tiene bluetooth?", [0,1])
+    three_g = st.selectbox("Es 3G", [0,1])
+    
+with col5:
+    dual_sim = st.selectbox("Tiene dual sim?",[0,1])
+    touch_screen =  st.selectbox("Es pantalla tactil?",[0,1])
+
+with col6:
+    four_g = st.selectbox("es 4G",[0,1])
+    wifi = st.selectbox("tiewn wifi?", [0,1])
+    
+st.divider()
+
+if st.button("Predict"):
+    
+    input_data = pd.DataFrame(
+        {
+            "battery_power": [battery_power],
+            "blue": [blue],
+            "clock_speed": [clock_speed],
+            "dual_sim": [dual_sim],
+            "fc": [fc],
+            "four_g": [four_g],
+            "int_memory": [int_memory],
+            "m_dep": [m_dep],
+            "mobile_wt": [mobile_wt],
+            "n_cores": [n_cores],
+            "pc": [pc],
+            "px_height": [px_height],
+            "px_width": [px_width],
+            "ram": [ram],
+            "sc_h": [sc_h],
+            "sc_w": [sc_w],
+            "talk_time": [talk_time],
+            "three_g": [three_g],
+            "touch_screen": [touch_screen],
+            "wifi": [wifi]
+            
+        }
+    )
+    
+    
+    
+    st.dataframe(input_data)
+    
+    pipeline_data = pipeline.transform(input_data)
+    
+    prediction = model.predict(pipeline_data)
+    
+    # st.write(prediction)
+    
+    if prediction[0] == 0:
+        st.success("El precio del dispositivo es bajo")
+    elif prediction[0] == 1:
+        st.success("el precio del dispositivo es medio")
+    elif prediction[0] == 2:
+        st.success("el precio del dispositivo es alto")
+    elif prediction[0] == 3:
+        st.success("el precio del dispositivo es muy alto")
+        
+    
